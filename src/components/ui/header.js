@@ -127,17 +127,15 @@ export default function Header(props) {
     const theme = useTheme();
     //appel de matche pour rendu mediaquery de tab
     const matches = useMediaQuery(theme.breakpoints.down('md'));
-    // active tabs
-    const [value, setValue] = useState(0);
 
     // changement de tabs
     const handleChange = (e, newValue) => {
-        setValue(newValue);
+        props.setValue(newValue);
     };
     // menu deroulant dans sur services
     const [anchorEl, setAnchorEl] = useState(null);
     const [openMenu, setOpenMenu] = useState(false);
-    const [selectedIndex, setselectedIndex] = useState(0);
+
     // for the drawer lateral menu
     const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -158,7 +156,7 @@ export default function Header(props) {
     const handleMenuItemClick = (e, i) => {
         setAnchorEl(null);
         setOpenMenu(false);
-        setselectedIndex(1);
+        props.setselectedIndex(1);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -204,30 +202,30 @@ export default function Header(props) {
         [...menuOptions, ...routes].forEach(route => {
             switch (window.location.pathname) {
                 case `${route.link}`:
-                    if (value !== route.activeIndex) {
-                        setValue(route.activeIndex);
+                    if (props.value !== route.activeIndex) {
+                        props.setValue(route.activeIndex);
                         if (
                             route.selectedIndex &&
-                            route.selectedIndex !== selectedIndex
+                            route.selectedIndex !== props.selectedIndex
                         ) {
-                            setselectedIndex(route.selectedIndex);
+                            props.setselectedIndex(route.selectedIndex);
                         }
                     }
                     break;
                 case '/estimate':
-                    setValue(5);
+                    props.setValue(5);
                     break;
                 default:
                     break;
             }
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value, menuOptions, selectedIndex, routes]);
+    }, [props.value, menuOptions, props.selectedIndex, routes]);
 
     const tabs = (
         <React.Fragment>
             <Tabs
-                value={value}
+                value={props.value}
                 onChange={handleChange}
                 indicatorColor="secondary"
                 className={classes.tabContainer}
@@ -271,8 +269,8 @@ export default function Header(props) {
                         component={Link}
                         to={option.link}
                         classes={{ root: classes.menuItem }}
-                        onClick={(event) => { handleMenuItemClick(event, i); setValue(1); handleClose(); }}
-                        selected={i === selectedIndex && value === 1}>
+                        onClick={(event) => { handleMenuItemClick(event, i); props.setValue(1); handleClose(); }}
+                        selected={i === props.selectedIndex && props.value === 1}>
                         {option.name}
                     </MenuItem>
                 ))}
@@ -297,11 +295,11 @@ export default function Header(props) {
                             button
                             component={Link}
                             to={route.link}
-                            selected={value === route.activeIndex}
+                            selected={props.value === route.activeIndex}
                             classes={{ selected: classes.drawerItemSelected }}
                             onClick={() => {
                                 setOpenDrawer(false);
-                                setValue(route.activeIndex);
+                                props.setValue(route.activeIndex);
                             }}
                         >
                             <ListItemText className={classes.drawerItem} disableTypography>
@@ -312,17 +310,17 @@ export default function Header(props) {
                     <ListItem
                         onClick={() => {
                             setOpenDrawer(false);
-                            setValue(5);
+                            props.setValue(5);
                         }}
                         divider
                         button
                         component={Link}
                         classes={{ root: classes.drawerItemEstimate }}
                         to="/estimate"
-                        selected={value === 5}
+                        selected={props.value === 5}
                     >
                         <ListItemText
-                            className={value === 5 ? [classes.drawerItem, classes.drawerItemEstimate] : classes.drawerItem}
+                            className={props.value === 5 ? [classes.drawerItem, classes.drawerItemEstimate] : classes.drawerItem}
                             disableTypography>
                             Free Estimate
                     </ListItemText>
@@ -343,7 +341,7 @@ export default function Header(props) {
             <ElevationScroll>
                 <AppBar position="fixed" color="primary" className={classes.appbar}>
                     <Toolbar disableGutters>
-                        <Button component={Link} to="/" className={classes.logoContainer} onClick={() => setValue(0)} disableRipple>
+                        <Button component={Link} to="/" className={classes.logoContainer} onClick={() => props.setValue(0)} disableRipple>
                             <img alt="compagny logo" className={classes.logo} src={logo} />
                         </Button>
                         {matches ? drawer : tabs}

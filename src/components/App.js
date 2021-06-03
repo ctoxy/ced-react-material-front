@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './ui/Theme';
 import Header from '../components/ui/header';
@@ -6,10 +6,18 @@ import Footer from '../components/ui/footer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function App() {
+  // active tabs to know the active tabs
+  const [value, setValue] = useState(0);
+  const [selectedIndex, setselectedIndex] = useState(0);
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Header />
+        <Header
+          value={value}
+          setValue={setValue}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setselectedIndex}
+        />
         <Switch>
           <Route exact path="/" component={() => <div style={{ height: '2000px' }}>Home</div>} />
           <Route exact path="/services" component={() => <div>services</div>} />
@@ -21,8 +29,13 @@ function App() {
           <Route exact path="/contact" component={() => <div>Contact Us</div>} />
           <Route exact path="/estimate" component={() => <div>estimate</div>} />
         </Switch>
+        <Footer
+          value={value}
+          setValue={setValue}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setselectedIndex} />
       </BrowserRouter>
-      <Footer />
+
     </ThemeProvider>
   );
 }
