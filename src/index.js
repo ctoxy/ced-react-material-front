@@ -4,11 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React>
-    <App />
-  </React>,
-  document.getElementById('root')
+ReactDOM.render(<App />, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
