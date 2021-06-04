@@ -4,6 +4,7 @@ import theme from './ui/Theme';
 import Header from '../components/ui/header';
 import Footer from '../components/ui/footer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LandingPage from '../components/LandingPage';
 
 function App() {
   // active tabs to know the active tabs
@@ -19,7 +20,7 @@ function App() {
           setSelectedIndex={setselectedIndex}
         />
         <Switch>
-          <Route exact path="/" component={() => <div style={{ height: '2000px' }}>Home</div>} />
+          <Route exact path="/" component={LandingPage} />
           <Route exact path="/services" component={() => <div>services</div>} />
           <Route exact path="/customsoftware" component={() => <div>Custom Sofware</div>} />
           <Route exact path="/mobileapps" component={() => <div>Mobile Apps</div>} />
