@@ -5,7 +5,10 @@ import Header from '../components/ui/header';
 import Footer from '../components/ui/footer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LandingPage from '../components/LandingPage';
-
+import Services from './Services';
+import CustomSoftware from './CustomSoftware';
+import MobileApps from './MobileApps';
+import Websites from './Websites';
 function App() {
   // active tabs to know the active tabs
   const [value, setValue] = useState(0);
@@ -21,10 +24,50 @@ function App() {
         />
         <Switch>
           <Route exact path="/" render={(props) => <LandingPage {...props} setValue={setValue} setSelectedIndex={setSelectedIndex} />} />
-          <Route exact path="/services" component={() => <div>services</div>} />
-          <Route exact path="/customsoftware" component={() => <div>Custom Sofware</div>} />
-          <Route exact path="/mobileapps" component={() => <div>Mobile Apps</div>} />
-          <Route exact path="/websites" component={() => <div>Websites</div>} />
+          <Route
+            exact
+            path="/services"
+            render={props => (
+              <Services
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/customsoftware"
+            render={props => (
+              <CustomSoftware
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/mobileapps"
+            render={props => (
+              <MobileApps
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/websites"
+            render={props => (
+              <Websites
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route exact path="/revolution" component={() => <div>The revolution</div>} />
           <Route exact path="/about" component={() => <div>About Us</div>} />
           <Route exact path="/contact" component={() => <div>Contact Us</div>} />
