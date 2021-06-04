@@ -148,7 +148,7 @@ export default function LandingPage(props) {
                 <Grid container justify="flex-end" alignItems="center" direction="row">
                     <Grid sm item className={classes.heroTextContainer}>
                         <Typography variant="h2" align="center">
-                            Actia Chartres Technology
+                            Pistoule Champhol Technology
                         <br />
                             Eure et Loire
                          </Typography>
