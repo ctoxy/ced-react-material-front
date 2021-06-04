@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         backgroundImage: `url(${background})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: 'fixed', //paralex effect
         backgroundRepeat: 'no-repeat',
         height: '60em',
         width: '100%',
@@ -67,21 +68,19 @@ export default function CallToAction(props) {
         >
             <Grid
                 item
-                style={{
-                    marginLeft: matchesSM ? 0 : '5em',
-                    textAlign: matchesSM ? 'center' : 'inherit'
-                }}
+                // eslint-disable-next-line react-native/no-inline-styles
+                style={{ marginLeft: matchesSM ? 0 : '5em', textAlign: matchesSM ? 'center' : 'inherit' }}
             >
                 <Grid container direction="column">
                     <Grid item>
                         <Typography variant="h2">
                             Simple Software.
-              <br />
-              Revolutionary Results.
-            </Typography>
+                            <br />
+                            Revolutionary Results.
+                        </Typography>
                         <Typography variant="subtitle2" style={{ fontSize: '1.5rem' }}>
                             Take advantage of the 21st Century.
-            </Typography>
+                        </Typography>
                         <Grid container justify={matchesSM ? 'center' : undefined} item>
                             <Button
                                 component={Link}
@@ -110,7 +109,7 @@ export default function CallToAction(props) {
                     onClick={() => props.setValue(5)}
                 >
                     Free Estimate
-        </Button>
+                </Button>
             </Grid>
         </Grid>
     );

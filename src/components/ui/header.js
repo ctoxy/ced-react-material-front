@@ -159,7 +159,7 @@ export default function Header(props) {
     const handleMenuItemClick = (e, i) => {
         setAnchorEl(null);
         setOpenMenu(false);
-        props.setselectedIndex(1);
+        props.setSelectedIndex(1);
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -211,7 +211,7 @@ export default function Header(props) {
                             route.selectedIndex &&
                             route.selectedIndex !== props.selectedIndex
                         ) {
-                            props.setselectedIndex(route.selectedIndex);
+                            props.setSelectedIndex(route.selectedIndex);
                         }
                     }
                     break;
@@ -252,6 +252,7 @@ export default function Header(props) {
                 className={classes.button}
                 component={Link}
                 to="/estimate"
+                onClick={() => props.setValue(5)}
             >Estimate
             </Button>
 
