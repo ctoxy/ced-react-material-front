@@ -51,6 +51,7 @@ export default function Services(props) {
         <Grid container direction="column">
             <Grid
                 item
+                // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                     marginLeft: matchesSM ? 0 : '5em',
                     marginTop: matchesSM ? '1em' : '2em'

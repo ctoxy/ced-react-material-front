@@ -184,6 +184,7 @@ export default function Contact(props) {
                 direction="column"
                 justify="center"
                 alignItems="center"
+                // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                     marginBottom: matchesMD ? '5em' : 0,
                     marginTop: matchesSM ? '1em' : matchesMD ? '5em' : 0
@@ -248,7 +249,7 @@ export default function Contact(props) {
                                         href="mailto:zachary@gmail.com"
                                         style={{ textDecoration: 'none', color: 'inherit' }}
                                     >
-                                        zachary@gmail.com
+                                        prenom.nom@xyz.com
                   </a>
                                 </Typography>
                             </Grid>

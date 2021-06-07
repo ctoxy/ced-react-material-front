@@ -9,8 +9,10 @@ import Services from './Services';
 import CustomSoftware from './CustomSoftware';
 import MobileApps from './MobileApps';
 import Websites from './Websites';
+import Revolution from './Revolution';
 import About from './About';
 import Contact from './Contact';
+import Estimate from './Estimate';
 function App() {
   // active tabs to know the active tabs
   const [value, setValue] = useState(0);
@@ -70,7 +72,17 @@ function App() {
               />
             )}
           />
-          <Route exact path="/revolution" component={() => <div>The revolution</div>} />
+          <Route
+            exact
+            path="/revolution"
+            render={props => (
+              <Revolution
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
           <Route
             exact
             path="/about"
@@ -93,7 +105,17 @@ function App() {
               />
             )}
           />
-          <Route exact path="/estimate" component={() => <div>estimate</div>} />
+          <Route
+            exact
+            path="/estimate"
+            render={props => (
+              <Estimate
+                {...props}
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )}
+          />
         </Switch>
         <Footer
           setValue={setValue}

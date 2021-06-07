@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
 import { useTheme } from '@material-ui/core/styles';
@@ -260,6 +260,7 @@ export default function Header(props) {
                 id="simple-menu"
                 classes={{ paper: classes.menu }}
                 elevation={0}
+                // eslint-disable-next-line react-native/no-inline-styles
                 style={{ zIndex: 1302 }}
                 keepMounted
                 anchorEl={anchorEl}
